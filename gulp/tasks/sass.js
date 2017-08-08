@@ -35,13 +35,13 @@ const logError = end => (err) => {
  * Gulp tasks
  */
 
-gulp.task('sass', done => gulp.src('server/pages/assets/sass/main.scss')
+gulp.task('sass', done => gulp.src('pages/assets/sass/main.scss')
     .pipe(sass())
     .on('error', logError(done))
     .pipe(postcss([
       normalize(),
       fontMagician({
-        hosted: ['server/pages/assets/fonts/'],
+        hosted: ['pages/assets/fonts/'],
       }),
       autoprefixer({
         cascade: false,

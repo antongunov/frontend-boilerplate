@@ -26,7 +26,7 @@ const logError = end => (err) => {
  * Gulp tasks
  */
 
-gulp.task('pug', done => gulp.src('server/pages/*.pug')
+gulp.task('pug', done => gulp.src('pages/*.pug')
     .pipe(pug({
       data: {
         env: process.env,

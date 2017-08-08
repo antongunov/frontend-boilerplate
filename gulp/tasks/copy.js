@@ -4,10 +4,10 @@ const gulp = require('gulp');
  * Gulp tasks
  */
 
-gulp.task('copy:root', () => gulp.src('server/pages/*.!(pug)', { since: gulp.lastRun('copy:root') })
+gulp.task('copy:root', () => gulp.src('pages/*.!(pug)', { since: gulp.lastRun('copy:root') })
     .pipe(gulp.dest('build/')));
 
-gulp.task('copy:fonts', () => gulp.src('server/pages/assets/fonts/*', { since: gulp.lastRun('copy:fonts') })
+gulp.task('copy:fonts', () => gulp.src('pages/assets/fonts/*', { since: gulp.lastRun('copy:fonts') })
     .pipe(gulp.dest('build/assets/fonts/')));
 
 gulp.task('copy', gulp.parallel(
