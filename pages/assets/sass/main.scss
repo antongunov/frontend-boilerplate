@@ -1,9 +1,7 @@
-@import-normalize;
-
 @charset "utf-8";
 
-@import "utils/placeholders/bg-image";
+@import-normalize;
 
-@import "base/base";
+@import 'utils/placeholders/bg-image';
 
-@import "../blocks/blocks";
+@import 'base/base';
