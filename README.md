@@ -1,6 +1,6 @@
-# Pages Boilerplate
+# Gulp Boilerplate
 
-Boilerplate for prototyping web pages using Gulp, PostCSS, and Webpack.
+Boilerplate for prototyping web pages using Gulp, PostCSS, Pug and SASS.
 
 ## License
 
