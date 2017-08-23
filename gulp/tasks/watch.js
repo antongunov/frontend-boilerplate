@@ -6,19 +6,16 @@ const gulp = require('gulp');
 
 gulp.task('watch', (done) => {
   gulp.watch([
-    'pages/*.pug',
-    'pages/assets/pug/**/*.pug',
-    'pages/assets/blocks/**/*.pug',
+    'pages/**/*.pug',
   ], gulp.series('pug'));
   gulp.watch([
     'pages/*.!(pug)',
   ], gulp.series('copy:root'));
   gulp.watch([
-    'pages/assets/fonts/*',
+    'assets/fonts/*',
   ], gulp.series('copy:fonts'));
   gulp.watch([
-    'pages/assets/sass/**/*.scss',
-    'pages/assets/blocks/**/*.scss',
+    'assets/sass/**/*.scss',
   ], gulp.series('sass'));
   return done();
 });

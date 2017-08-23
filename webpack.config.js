@@ -2,7 +2,7 @@ const resolve = require('path').resolve;
 const fs = require('fs');
 const webpack = require('webpack');
 
-const context = resolve('pages/assets/js/');
+const context = resolve('assets/js/');
 
 const entries = (dir) => {
   const chunks = {};

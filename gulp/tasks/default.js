@@ -7,7 +7,7 @@ const gulp = require('gulp');
 gulp.task('default:production', gulp.series(
   'clean',
   gulp.parallel(
-    'copy',
+    'copy:assets',
     'pug',
     'sass',
     'webpack:run'
@@ -17,7 +17,7 @@ gulp.task('default:production', gulp.series(
 gulp.task('default:development', gulp.series(
   'clean',
   gulp.parallel(
-    'copy',
+    'copy:assets',
     'pug',
     'sass',
     'webpack:watch'
