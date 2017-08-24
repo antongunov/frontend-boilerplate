@@ -1,9 +1,5 @@
 const gulp = require('gulp');
 
-/**
- * Gulp tasks
- */
-
 gulp.task('copy:root', () => gulp.src('pages/*.!(pug)', { since: gulp.lastRun('copy:root') })
     .pipe(gulp.dest('build/')));
 

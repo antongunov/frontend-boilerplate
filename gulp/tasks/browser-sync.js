@@ -1,10 +1,6 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 
-/**
- * Gulp tasks
- */
-
 gulp.task('browser-sync:reload', (done) => {
   browserSync.reload();
   return done();
@@ -16,8 +12,10 @@ gulp.task('browser-sync:init', (done) => {
       baseDir: 'build/',
       index: 'home.html',
       serveStaticOptions: {
-        extensions: [ 'html' ]
-      }
+        extensions: [
+          'html',
+        ],
+      },
     },
     open: false,
     ui: false,

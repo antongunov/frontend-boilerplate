@@ -1,9 +1,5 @@
 const gulp = require('gulp');
 
-/**
- * Gulp tasks
- */
-
 gulp.task('default:production', gulp.series(
   'clean',
   gulp.parallel(

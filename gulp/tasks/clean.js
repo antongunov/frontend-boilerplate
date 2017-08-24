@@ -2,10 +2,6 @@ const gulp = require('gulp');
 const path = require('path');
 const rimraf = require('rimraf');
 
-/**
- * Gulp tasks
- */
-
 gulp.task('clean', (done) => {
   const from = 'build/*';
   const cwd = process.cwd();

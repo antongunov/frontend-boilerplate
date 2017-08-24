@@ -1,7 +1,7 @@
 {
   "name": "@antongunov/pages-boilerplate",
   "version": "0.1.0",
-  "description": "Boilerplate for prototyping web pages using Gulp, PostCSS, and Webpack",
+  "description": "Boilerplate for prototyping web pages using Gulp, PostCSS, Pug and SASS",
   "private": true,
   "author": {
     "name": "Anton Gunov",
@@ -15,15 +15,13 @@
   "bugs": {
     "url": "https://github.com/antongunov/pages-boilerplate/issues"
   },
-  "dependencies": {
-    "dotenv": "^4.0.0"
-  },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.0",
     "babel-preset-env": "^1.6.0",
     "browser-sync": "^2.18.12",
+    "dotenv": "^4.0.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.7.0",
