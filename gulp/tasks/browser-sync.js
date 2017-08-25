@@ -22,5 +22,7 @@ gulp.task('browser-sync:init', (done) => {
     notify: false,
   }, done());
 
-  gulp.watch('build/**/*', gulp.series('browser-sync:reload'));
+  gulp.watch([
+    'build/**/*',
+  ], gulp.series('browser-sync:reload'));
 });
