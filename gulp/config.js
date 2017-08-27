@@ -1,15 +1,12 @@
+const gulp = require('gulp');
+const gulpLoadPlugins = require('gulp-load-plugins');
 const path = require('path');
 
 const joinDir = rootDir => subDir => subDir ? path.join(rootDir, subDir) : path.join(rootDir);
 
 module.exports = {
-  gulp: require('gulp'),
-  in: {
-    plumber: require('gulp-plumber'),
-    postcss: require('gulp-postcss'),
-    pug: require('gulp-pug'),
-    sass: require('gulp-sass'),
-  },
+  gulp,
+  in: gulpLoadPlugins(),
   dir: {
     assets: joinDir('assets/'),
     build: joinDir('build/'),
