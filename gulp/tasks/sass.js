@@ -1,21 +1,21 @@
-const gulp = require('gulp');
-const sass = require('gulp-sass');
-const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const normalize = require('postcss-normalize');
 const fontMagician = require('postcss-font-magician');
-const plumber = require('gulp-plumber');
 
-gulp.task('sass', done => gulp.src('assets/sass/main.scss')
-  .pipe(plumber())
-  .pipe(sass())
-  .pipe(postcss([
-    normalize(),
-    fontMagician({
-      hosted: ['assets/fonts/'],
-    }),
-    autoprefixer({
-      cascade: false,
-    }),
-  ]))
-  .pipe(gulp.dest('build/assets/css/')));
+module.exports = ($) => {
+  $.gulp.task('sass', done => $.gulp.src($.dir.assets('sass/main.scss'))
+    .pipe($.in.plumber())
+    .pipe($.in.sass())
+    .pipe($.in.postcss([
+      normalize(),
+      fontMagician({
+        hosted: [
+          $.dir.assets('fonts/'),
+        ],
+      }),
+      autoprefixer({
+        cascade: false,
+      }),
+    ]))
+    .pipe($.gulp.dest($.dir.build('assets/css/'))));
+};
