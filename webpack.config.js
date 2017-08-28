@@ -9,7 +9,7 @@ const entries = (dir) => {
   fs.readdirSync(dir)
     .filter(file => /\.js$/.test(file))
     .forEach((file) => {
-      const name = file.slice(0, '.js'.length);
+      const name = file.slice(0, -'.js'.length);
       chunks[name] = `./${file}`;
     });
   return chunks;
