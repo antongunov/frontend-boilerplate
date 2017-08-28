@@ -17,7 +17,6 @@ gulp.task('default:development', gulp.series(
     'sass'
   ),
   gulp.parallel(
-    'watch',
     'browser-sync:init'
   )
 ));

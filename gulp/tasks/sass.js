@@ -3,7 +3,7 @@ const normalize = require('postcss-normalize');
 const fontMagician = require('postcss-font-magician');
 
 module.exports = ($) => {
-  $.gulp.task('sass', done => $.gulp.src($.dir.assets('sass/main.scss'))
+  $.gulp.task('sass', () => $.gulp.src($.dir.assets('sass/main.scss'))
     .pipe($.in.plumber())
     .pipe($.in.sass())
     .pipe($.in.postcss([
@@ -18,4 +18,7 @@ module.exports = ($) => {
       }),
     ]))
     .pipe($.gulp.dest($.dir.build('assets/css/'))));
+  if ($.isDev) {
+    $.gulp.watch($.dir.assets('sass/**/*.scss'), $.gulp.series('sass'));
+  }
 };

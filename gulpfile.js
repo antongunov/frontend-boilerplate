@@ -15,7 +15,6 @@ require('./gulp/tasks/clean')($);
 require('./gulp/tasks/copy')($);
 require('./gulp/tasks/pug')($);
 require('./gulp/tasks/sass')($);
-require('./gulp/tasks/watch');
 
 /**
  * Main tasks
