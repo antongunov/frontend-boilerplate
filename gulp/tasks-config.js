@@ -14,5 +14,5 @@ module.exports = {
     pages: joinDir('pages'),
     public: joinDir('public'),
   },
-  isDev: process.env.NODE_ENV === 'development',
+  isDev: !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
 };
