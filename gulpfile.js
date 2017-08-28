@@ -1,17 +1,14 @@
 const $ = require('./gulp/config');
 
-/**
- * Sub-tasks
- */
-
 require('./gulp/tasks/browser-sync')($);
 require('./gulp/tasks/clean')($);
 require('./gulp/tasks/copy')($);
 require('./gulp/tasks/pug')($);
 require('./gulp/tasks/sass')($);
 
-/**
- * Main tasks
- */
+require('./gulp/tasks/build')($.gulp);
+require('./gulp/tasks/dev')($.gulp);
 
-require('./gulp/tasks/default');
+if ($.isDev) {
+  $.gulp.task('default', $.gulp.series('dev'));
+}
