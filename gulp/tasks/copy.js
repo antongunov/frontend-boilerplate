@@ -1,12 +1,17 @@
-const gulp = require('gulp');
+const createCopyTask = (gulp, options) => (taskName, from, to) => {
+  const taskFullname = `copy:${taskName}`;
+  gulp.task(taskFullname, () => gulp.src(from, { since: gulp.lastRun(taskFullname) })
+    .pipe(gulp.dest(to)));
+  if (options.isDev) {
+    gulp.watch(from, gulp.series(taskFullname));
+  }
+  return taskFullname;
+};
 
-gulp.task('copy:root', () => gulp.src('pages/*.!(pug)', { since: gulp.lastRun('copy:root') })
-    .pipe(gulp.dest('build/')));
-
-gulp.task('copy:fonts', () => gulp.src('assets/fonts/*', { since: gulp.lastRun('copy:fonts') })
-    .pipe(gulp.dest('build/assets/fonts/')));
-
-gulp.task('copy:assets', gulp.parallel(
-  'copy:root',
-  'copy:fonts'
-));
+module.exports = (gulp, options) => {
+  const copyTask = createCopyTask(gulp, options);
+  gulp.task('copy:assets', gulp.parallel(
+    copyTask('public', options.dir.public('**/*'), options.dir.build()),
+    copyTask('fonts', options.dir.assets('fonts/**/*'), options.dir.build('assets/fonts/'))
+  ));
+};

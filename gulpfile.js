@@ -1,23 +1,19 @@
-/**
- * Load environment variables
- */
+const loadTasks = require('./gulp/load-tasks');
 
-require('dotenv').config();
+// load sub-tasks
+loadTasks([
+  'browser-sync',
+  'clean',
+  'copy',
+  'pug',
+  'sass',
+]);
 
-/**
- * Sub-tasks
- */
+// load main tasks
+loadTasks([
+  'build',
+  'dev',
+]);
 
-require('./gulp/tasks/browser-sync');
-require('./gulp/tasks/clean');
-require('./gulp/tasks/copy');
-require('./gulp/tasks/pug');
-require('./gulp/tasks/sass');
-require('./gulp/tasks/watch');
-require('./gulp/tasks/webpack');
-
-/**
- * Main tasks
- */
-
-require('./gulp/tasks/default');
+// load root task
+loadTasks('default');
