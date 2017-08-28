@@ -1,9 +1,12 @@
+const dotenv = require('dotenv');
 const gulp = require('gulp');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const path = require('path');
 
 const joinDir = rootDir => subDir => subDir ? path.join(rootDir, subDir) : path.join(rootDir);
-const isDev = process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+
+// load environment variables
+dotenv.config();
 
 module.exports = {
   dir: {
@@ -14,5 +17,5 @@ module.exports = {
   },
   gulp,
   in: gulpLoadPlugins(),
-  isDev,
+  isDev: process.env.NODE_ENV === 'development',
 };

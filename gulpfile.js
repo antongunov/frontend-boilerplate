@@ -1,12 +1,6 @@
 const $ = require('./gulp/config');
 
 /**
- * Load environment variables
- */
-
-require('dotenv').config();
-
-/**
  * Sub-tasks
  */
 
