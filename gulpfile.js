@@ -1,4 +1,10 @@
-const loadTasks = require('./gulp/load-tasks');
+const dotenv = require('dotenv');
+
+// load environment variables
+dotenv.config();
+
+const tasksConfig = require('./gulp/tasks-config');
+const loadTasks = require('./gulp/load-tasks')(tasksConfig);
 
 // load sub-tasks
 loadTasks([
