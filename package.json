@@ -15,12 +15,17 @@
   "bugs": {
     "url": "https://github.com/antongunov/pages-boilerplate/issues"
   },
+  "scripts": {
+    "build": "NODE_ENV=production gulp build",
+    "dev": "NODE_ENV=development gulp dev"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.0",
     "babel-preset-env": "^1.6.0",
     "browser-sync": "^2.18.12",
+    "cssnano": "^3.10.0",
     "del": "^3.0.0",
     "dotenv": "^4.0.0",
     "eslint": "^3.19.0",
