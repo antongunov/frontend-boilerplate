@@ -1,15 +1,17 @@
-const copyTask = ($, taskName, from, to) => {
-  $.gulp.task(taskName, () => $.gulp.src(from, { since: $.gulp.lastRun(taskName) })
-    .pipe($.gulp.dest(to)));
-  if ($.isDev) {
-    $.gulp.watch(from, $.gulp.series(taskName));
+const createCopyTask = (gulp, options) => (taskName, from, to) => {
+  const taskFullname = `copy:${taskName}`;
+  gulp.task(taskFullname, () => gulp.src(from, { since: gulp.lastRun(taskFullname) })
+    .pipe(gulp.dest(to)));
+  if (options.isDev) {
+    gulp.watch(from, gulp.series(taskFullname));
   }
-  return taskName;
+  return taskFullname;
 };
 
-module.exports = ($) => {
-  $.gulp.task('copy:assets', $.gulp.parallel(
-    copyTask($, 'copy:public', $.dir.public('**/*'), $.dir.build()),
-    copyTask($, 'copy:fonts', $.dir.assets('fonts/**/*'), $.dir.build('assets/fonts/'))
+module.exports = (gulp, options) => {
+  const copyTask = createCopyTask(gulp, options);
+  gulp.task('copy:assets', gulp.parallel(
+    copyTask('public', options.dir.public('**/*'), options.dir.build()),
+    copyTask('fonts', options.dir.assets('fonts/**/*'), options.dir.build('assets/fonts/'))
   ));
 };

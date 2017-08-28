@@ -1,14 +1,19 @@
-const $ = require('./gulp/config');
+const loadTasks = require('./gulp/load-tasks');
 
-require('./gulp/tasks/browser-sync')($);
-require('./gulp/tasks/clean')($);
-require('./gulp/tasks/copy')($);
-require('./gulp/tasks/pug')($);
-require('./gulp/tasks/sass')($);
+// load sub-tasks
+loadTasks([
+  'browser-sync',
+  'clean',
+  'copy',
+  'pug',
+  'sass',
+]);
 
-require('./gulp/tasks/build')($.gulp);
-require('./gulp/tasks/dev')($.gulp);
+// load main tasks
+loadTasks([
+  'build',
+  'dev',
+]);
 
-if ($.isDev) {
-  $.gulp.task('default', $.gulp.series('dev'));
-}
+// load root task
+loadTasks('default');

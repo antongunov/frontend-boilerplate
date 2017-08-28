@@ -1,14 +1,14 @@
 const browserSync = require('browser-sync').create();
 
-module.exports = ($) => {
-  $.gulp.task('browser-sync:reload', (done) => {
+module.exports = (gulp, options) => {
+  gulp.task('browser-sync:reload', (done) => {
     browserSync.reload();
     return done();
   });
-  $.gulp.task('browser-sync:init', (done) => {
+  gulp.task('browser-sync:init', (done) => {
     browserSync.init({
       server: {
-        baseDir: $.dir.build(),
+        baseDir: options.dir.build(),
         index: 'home.html',
         serveStaticOptions: {
           extensions: [
@@ -21,8 +21,8 @@ module.exports = ($) => {
       notify: false,
     }, done());
 
-    $.gulp.watch([
-      $.dir.build('**/*'),
-    ], $.gulp.series('browser-sync:reload'));
+    gulp.watch([
+      options.dir.build('**/*'),
+    ], gulp.series('browser-sync:reload'));
   });
 };
