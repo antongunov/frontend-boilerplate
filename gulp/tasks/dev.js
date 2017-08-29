@@ -4,7 +4,8 @@ module.exports = (gulp) => {
     gulp.parallel(
       'copy:assets',
       'pug',
-      'sass'
+      'sass',
+      'js'
     ),
     gulp.parallel(
       'browser-sync:init'

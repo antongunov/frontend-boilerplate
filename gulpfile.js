@@ -13,6 +13,7 @@ loadTasks([
   'copy',
   'pug',
   'sass',
+  'js',
 ]);
 
 // load main tasks
