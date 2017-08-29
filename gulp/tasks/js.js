@@ -1,5 +1,6 @@
 module.exports = (gulp, options, plugins) => {
   gulp.task('js', () => gulp.src(options.dir.assets('js/**/*.js'))
+    .pipe(plugins.babel())
     .pipe(plugins.concat('main.js'))
     .pipe(plugins.if(!options.isDev, plugins.uglify()))
     .pipe(gulp.dest(options.dir.build('assets/js/'))));
