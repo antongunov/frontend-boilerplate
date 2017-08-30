@@ -1,13 +1,14 @@
 module.exports = (gulp, options, plugins) => {
-  gulp.task('pug', () => gulp.src(options.dir.pages('*.pug'))
+  const task = () => gulp.src(options.dir.pages('*.pug'))
     .pipe(plugins.plumber())
     .pipe(plugins.pug({
       data: {
         env: process.env,
       },
     }))
-    .pipe(gulp.dest(options.dir.build())));
-  if (options.isDev) {
-    gulp.watch(options.dir.pages('**/*.pug'), gulp.series('pug'));
-  }
+    .pipe(gulp.dest(options.dir.build()));
+  return {
+    run: task,
+    watch: () => gulp.watch(options.dir.pages('**/*.pug'), gulp.series(options.name())),
+  };
 };

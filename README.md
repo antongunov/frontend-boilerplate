@@ -16,6 +16,10 @@ Copy `.env.example` to `.env` and set your settings.
 
 Run `npm run dev` for developing or `npm run build` for production.
 
+## Tasks
+
+All sub-tasks are independent.
+
 ## License
 
 The code is available under the [MIT License](LICENSE).

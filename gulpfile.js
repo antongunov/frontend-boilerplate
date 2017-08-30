@@ -3,24 +3,19 @@ const dotenv = require('dotenv');
 // load environment variables
 dotenv.config();
 
-const tasksConfig = require('./gulp/tasks-config');
-const loadTasks = require('./gulp/load-tasks')(tasksConfig);
+const lazyLoadTask = require('./gulp/lazy-load-task')(require('./gulp/config'));
 
 // load sub-tasks
-loadTasks([
-  'browser-sync',
-  'clean',
-  'copy',
-  'pug',
-  'sass',
-  'js',
-]);
+lazyLoadTask('browser-sync');
+lazyLoadTask('clean');
+lazyLoadTask('copy');
+lazyLoadTask('pug');
+lazyLoadTask('sass');
+lazyLoadTask('js');
 
 // load main tasks
-loadTasks([
-  'build',
-  'dev',
-]);
+lazyLoadTask('build');
+lazyLoadTask('dev');
 
 // load root task
-loadTasks('default');
+lazyLoadTask('default');

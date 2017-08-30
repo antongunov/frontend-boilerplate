@@ -1,3 +1,6 @@
 module.exports = (gulp, options) => {
-  gulp.task('default', gulp.series(options.isDev ? 'dev' : 'build'));
+  const task = gulp.series(options.isDev ? 'dev' : 'build');
+  return {
+    run: task,
+  };
 };
