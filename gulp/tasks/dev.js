@@ -1,14 +1,17 @@
 module.exports = (gulp) => {
-  gulp.task('dev', gulp.series(
+  const task = gulp.series(
     'clean',
     gulp.parallel(
-      'copy:assets',
+      'copy',
       'pug',
       'sass',
       'js'
     ),
     gulp.parallel(
-      'browser-sync:init'
+      'browser-sync'
     )
-  ));
+  );
+  return {
+    run: task,
+  };
 };
