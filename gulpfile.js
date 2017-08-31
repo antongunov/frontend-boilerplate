@@ -8,7 +8,8 @@ const lazyLoadTask = require('./gulp/lazy-load-task')(require('./gulp/config'));
 // load sub-tasks
 lazyLoadTask('browser-sync');
 lazyLoadTask('clean');
-lazyLoadTask('copy');
+lazyLoadTask('fonts');
+lazyLoadTask('public');
 lazyLoadTask('pug');
 lazyLoadTask('sass');
 lazyLoadTask('js');

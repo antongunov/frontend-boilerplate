@@ -2,10 +2,11 @@ module.exports = (gulp) => {
   const task = gulp.series(
     'clean',
     gulp.parallel(
-      'copy',
+      'fonts',
+      'js',
+      'public',
       'pug',
-      'sass',
-      'js'
+      'sass'
     )
   );
   return {

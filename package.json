@@ -1,6 +1,6 @@
 {
   "name": "@antongunov/pages-boilerplate",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Boilerplate for prototyping web pages using Gulp, PostCSS, Pug and SASS",
   "private": true,
   "author": {
