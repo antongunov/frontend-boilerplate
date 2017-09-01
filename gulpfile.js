@@ -15,6 +15,7 @@ lazyLoadTask('sass');
 lazyLoadTask('js');
 
 // load main tasks
+lazyLoadTask('assets');
 lazyLoadTask('build');
 lazyLoadTask('dev');
 
