@@ -1,10 +1,16 @@
-const dotenv = require('dotenv');
 const loadTasks = require('./gulp/load-tasks');
 
-// load environment variables
-dotenv.config();
+/**
+ * Load environment variables from .env file.
+ */
+require('dotenv').config();
 
 loadTasks({
+  /**
+   * Settings for load tasks.
+   */
+  tasksDir: 'gulp/tasks/',
+  plugins: require('gulp-load-plugins')(),
   /**
    * General options for all tasks.
    */

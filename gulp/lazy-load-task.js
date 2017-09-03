@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const plugins = require('gulp-load-plugins')();
 const path = require('path');
 
 const joinDir = (rootDir) => {
@@ -25,7 +24,7 @@ const joinName = mainName => subName => {
   return subName ? `${mainName}:${subName}` : mainName;
 };
 
-module.exports = (config) => {
+module.exports = (config, plugins) => {
   const updConfig = updateConfig(config);
   return (name) => {
     let task = null;
