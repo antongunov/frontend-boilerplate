@@ -23,4 +23,16 @@ loadTasks({
     },
     isDev: !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
   },
+  /**
+   * Options for tasks.
+   */
+  tasks: {
+    'browser-sync': {
+      server: {
+        baseDir: 'build/',
+        index: 'home.html',
+      },
+      $watch: 'build/**/*',
+    },
+  },
 });

@@ -5,24 +5,15 @@ module.exports = (gulp, options) => {
     browserSync.reload();
     return done();
   });
-  const task = (done) => {
-    browserSync.init({
-      server: {
-        baseDir: options.dir.build(),
-        index: 'home.html',
-        serveStaticOptions: {
-          extensions: [
-            'html',
-          ],
-        },
-      },
-      open: false,
-      ui: false,
-      notify: false,
-    }, done());
-  };
   return {
-    run: task,
-    watch: () => gulp.watch(options.dir.build('**/*'), gulp.series(options.name('reload'))),
+    run: (done) => {
+      browserSync.init({
+        server: options.server,
+        open: false,
+        ui: false,
+        notify: false,
+      }, done());
+    },
+    watch: () => gulp.watch(options.$watch, gulp.series(options.name('reload'))),
   };
 };

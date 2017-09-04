@@ -26,11 +26,11 @@ const joinName = mainName => subName => {
 
 module.exports = (config, plugins) => {
   const updConfig = updateConfig(config);
-  return (name) => {
+  return (name, options) => {
     let task = null;
     gulp.task(name, (done) => {
       if (!task) {
-        const taskConfig = Object.assign(updConfig, { name: joinName(name) });
+        const taskConfig = Object.assign({}, updConfig, options, { name: joinName(name) });
         task = require(tasksDir(name))(gulp, taskConfig, plugins);
         task.run(done);
         if (config.isDev && task.watch) {
