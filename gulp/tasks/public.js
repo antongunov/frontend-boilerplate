@@ -1,11 +1,12 @@
-module.exports = (gulp, options) => {
+module.exports = (gulp, options, plugins) => {
   return {
     run: () => {
-      gulp.src(options.dir.public('**/*'), { since: gulp.lastRun(options.name()) })
-        .pipe(gulp.dest(options.dir.build()));
+      gulp.src(options.src)
+        .pipe(plugins.newer(options.dest))
+        .pipe(gulp.dest(options.dest));
     },
     watch: () => {
-      gulp.watch(options.dir.public('**/*'), gulp.series(options.name()));
+      gulp.watch(options.watch, gulp.series(options.name()));
     },
   };
 };

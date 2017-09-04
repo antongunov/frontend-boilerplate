@@ -37,5 +37,15 @@ loadTasks({
     clean: {
       dest: 'build/',
     },
+    fonts: {
+      src: 'assets/fonts/**/*',
+      dest: 'build/assets/fonts/',
+      watch: 'assets/fonts/**/*',
+    },
+    public: {
+      src: 'public/**/*',
+      dest: 'build/',
+      watch: 'public/**/*',
+    },
   },
 });
