@@ -14,6 +14,8 @@ module.exports = (gulp, options) => {
         notify: false,
       }, done());
     },
-    watch: () => gulp.watch(options.$watch, gulp.series(options.name('reload'))),
+    watch: () => {
+      gulp.watch(options.watch, gulp.series(options.name('reload')));
+    },
   };
 };

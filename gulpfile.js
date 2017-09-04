@@ -32,7 +32,10 @@ loadTasks({
         baseDir: 'build/',
         index: 'home.html',
       },
-      $watch: 'build/**/*',
+      watch: 'build/**/*',
+    },
+    clean: {
+      dest: 'build/',
     },
   },
 });
