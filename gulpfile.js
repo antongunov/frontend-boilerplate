@@ -21,6 +21,7 @@ loadTasks({
       pages: 'pages/',
       public: 'public/',
     },
+    isDebug: false,
     isDev: !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
   },
   /**
@@ -43,6 +44,7 @@ loadTasks({
       watch: 'assets/fonts/**/*',
     },
     public: {
+      isDebug: true,
       src: 'public/**/*',
       dest: 'build/',
       watch: 'public/**/*',
