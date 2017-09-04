@@ -18,7 +18,7 @@ Run `npm run dev` for developing or `npm run build` for production.
 
 ## Tasks
 
-All sub-tasks are independent.
+All tasks are independent.
 
 ## License
 

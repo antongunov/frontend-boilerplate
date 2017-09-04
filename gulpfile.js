@@ -7,7 +7,7 @@ require('dotenv').config();
 
 loadTasks({
   /**
-   * Settings for load tasks.
+   * Settings to load tasks.
    */
   tasksDir: 'gulp/tasks/',
   plugins: require('gulp-load-plugins')(),
