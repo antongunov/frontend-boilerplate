@@ -3,7 +3,7 @@ module.exports = (gulp, options, plugins) => {
     run: () => {
       gulp.src(options.src)
         .pipe(plugins.plumber())
-        .pipe(plugins.if(options.isDebug, plugins.debug({ title: `${options.name()}:` })))
+        .pipe(plugins.if(options.debug, plugins.debug({ title: `${options.name()}:` })))
         .pipe(plugins.pug({
           data: options.data,
         }))

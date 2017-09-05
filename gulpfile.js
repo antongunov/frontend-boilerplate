@@ -1,4 +1,5 @@
 const loadTasks = require('./gulp/load-tasks');
+const loadPlugins = require('gulp-load-plugins');
 
 /**
  * Load environment variables from .env file.
@@ -10,19 +11,13 @@ loadTasks({
    * Settings to load tasks.
    */
   tasksDir: 'gulp/tasks/',
-  plugins: require('gulp-load-plugins')(),
+  plugins: loadPlugins(),
   /**
    * General options for all tasks.
    */
   options: {
-    dir: {
-      assets: 'assets/',
-      build: 'build/',
-      pages: 'pages/',
-      public: 'public/',
-    },
-    isDebug: false,
-    isDev: !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
+    debug: true,
+    live: !process.env.NODE_ENV || process.env.NODE_ENV === 'development',
   },
   /**
    * Options for tasks.

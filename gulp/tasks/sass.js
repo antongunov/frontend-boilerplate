@@ -5,11 +5,11 @@ module.exports = (gulp, options, plugins) => {
     run: () => {
       gulp.src(options.src)
         .pipe(plugins.plumber())
-        .pipe(plugins.if(options.isDebug, plugins.debug({ title: `${options.name()}:` })))
-        .pipe(plugins.if(options.isDev, plugins.sourcemaps.init()))
+        .pipe(plugins.if(options.debug, plugins.debug({ title: `${options.name()}:` })))
+        .pipe(plugins.if(options.live, plugins.sourcemaps.init()))
           .pipe(plugins.sass())
-          .pipe(plugins.postcss(postcssPlugins(options.postcss, options.isDev)))
-        .pipe(plugins.if(options.isDev, plugins.sourcemaps.write()))
+          .pipe(plugins.postcss(postcssPlugins(options.postcss, options.live)))
+        .pipe(plugins.if(options.live, plugins.sourcemaps.write()))
         .pipe(gulp.dest(options.dest));
     },
     watch: () => {
