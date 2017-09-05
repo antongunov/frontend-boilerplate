@@ -1,14 +1,16 @@
 module.exports = (gulp, options, plugins) => {
-  const task = () => gulp.src(options.dir.pages('*.pug'))
-    .pipe(plugins.plumber())
-    .pipe(plugins.pug({
-      data: {
-        env: process.env,
-      },
-    }))
-    .pipe(gulp.dest(options.dir.build()));
   return {
-    run: task,
-    watch: () => gulp.watch(options.dir.pages('**/*.pug'), gulp.series(options.name())),
+    run: () => {
+      gulp.src(options.src)
+        .pipe(plugins.plumber())
+        .pipe(plugins.if(options.isDebug, plugins.debug({ title: `${options.name()}:` })))
+        .pipe(plugins.pug({
+          data: options.data,
+        }))
+        .pipe(gulp.dest(options.dest));
+    },
+    watch: () => {
+      gulp.watch(options.watch, gulp.series(options.name()));
+    },
   };
 };

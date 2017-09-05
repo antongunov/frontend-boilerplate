@@ -43,11 +43,24 @@ loadTasks({
       dest: 'build/assets/fonts/',
       watch: 'assets/fonts/**/*',
     },
+    js: {
+      src: 'assets/js/**/*.js',
+      main: 'main.js',
+      dest: 'build/assets/js/',
+      watch: 'assets/js/**/*.js',
+    },
     public: {
-      isDebug: true,
       src: 'public/**/*',
       dest: 'build/',
       watch: 'public/**/*',
+    },
+    pug: {
+      src: 'pages/*.pug',
+      data: {
+        env: process.env,
+      },
+      dest: 'build/',
+      watch: 'pages/**/*.pug',
     },
   },
 });
