@@ -1,5 +1,5 @@
 {
-  "name": "@antongunov/pages-boilerplate",
+  "name": "@antongunov/gulp-boilerplate",
   "version": "0.0.1",
   "description": "Boilerplate for prototyping web pages using Gulp, PostCSS, Pug and SASS",
   "private": true,

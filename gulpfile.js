@@ -1,5 +1,20 @@
 const loadTasks = require('./gulp/load-tasks');
 const loadPlugins = require('gulp-load-plugins');
+const resolve = require('path').resolve;
+
+const joinDir = (mainDir) => {
+  return (subDir) => {
+    return subDir ? resolve(mainDir, subDir) : resolve(mainDir);
+  };
+};
+
+/**
+ * Resolve main directories.
+ */
+const assetsDir = joinDir('assets');
+const buildDir = joinDir('build');
+const publicDir = joinDir('public');
+const pagesDir = joinDir('pages');
 
 /**
  * Load environment variables from .env file.
@@ -10,7 +25,7 @@ loadTasks({
   /**
    * Settings to load tasks.
    */
-  tasksDir: 'gulp/tasks/',
+  tasksDir: joinDir('gulp/tasks/'),
   plugins: loadPlugins(),
   /**
    * General options for all tasks.
@@ -25,40 +40,40 @@ loadTasks({
   tasks: {
     'browser-sync': {
       server: {
-        baseDir: 'build/',
+        baseDir: buildDir(),
         index: 'home.html',
       },
-      watch: 'build/**/*',
+      watch: buildDir('**/*'),
     },
     clean: {
-      dest: 'build/',
+      dest: buildDir(),
     },
     fonts: {
-      src: 'assets/fonts/**/*',
-      dest: 'build/assets/fonts/',
-      watch: 'assets/fonts/**/*',
+      src: assetsDir('fonts/**/*'),
+      dest: buildDir('assets/fonts/'),
+      watch: assetsDir('fonts/**/*'),
     },
     js: {
-      src: 'assets/js/**/*.js',
+      src: assetsDir('js/**/*.{js,json}'),
       main: 'main.js',
-      dest: 'build/assets/js/',
-      watch: 'assets/js/**/*.js',
+      dest: buildDir('assets/js/'),
+      watch: assetsDir('js/**/*.{js,json}'),
     },
     public: {
-      src: 'public/**/*',
-      dest: 'build/',
-      watch: 'public/**/*',
+      src: publicDir('**/*'),
+      dest: buildDir(),
+      watch: publicDir('**/*'),
     },
     pug: {
-      src: 'pages/*.pug',
+      src: pagesDir('*.pug'),
       data: {
         env: process.env,
       },
-      dest: 'build/',
-      watch: 'pages/**/*.pug',
+      dest: buildDir(),
+      watch: pagesDir('**/*.pug'),
     },
     sass: {
-      src: 'assets/sass/main.scss',
+      src: assetsDir('sass/main.scss'),
       postcss: {
         autoprefixer: {
           cascade: false,
@@ -68,12 +83,12 @@ loadTasks({
         },
         fontMagician: {
           hosted: [
-            'assets/fonts/',
+            assetsDir('fonts/'),
           ],
         },
       },
-      dest: 'build/assets/css/',
-      watch: 'assets/sass/**/*.{scss,css}',
+      dest: buildDir('assets/css/'),
+      watch: assetsDir('sass/**/*.{scss,css}'),
     },
   },
 });

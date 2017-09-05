@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const resolve = require('path').resolve;
 
 const joinName = (mainName) => {
   return (subName) => {
@@ -7,13 +6,13 @@ const joinName = (mainName) => {
   };
 };
 
-module.exports = (config, plugins) => {
+module.exports = (tasksDir, config, plugins) => {
   return (name, options) => {
     let task = null;
     gulp.task(name, (done) => {
       if (!task) {
         const taskConfig = Object.assign({}, config, options, { name: joinName(name) });
-        task = require(resolve(`gulp/tasks/${name}`))(gulp, taskConfig, plugins);
+        task = require(tasksDir(name))(gulp, taskConfig, plugins);
         task.run(done);
         if (config.live && task.watch) {
           task.watch();
