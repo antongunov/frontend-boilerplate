@@ -1,37 +1,19 @@
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const fontMagician = require('postcss-font-magician');
-const normalize = require('postcss-normalize');
+const postcssPlugins = require('../postcss-plugins');
 
 module.exports = (gulp, options, plugins) => {
-  const postcssPlugins = [
-    normalize(),
-    fontMagician({
-      hosted: [
-        options.dir.assets('fonts/'),
-      ],
-    }),
-    autoprefixer({
-      cascade: false,
-    }),
-  ];
-
-  if (!options.isDev) {
-    postcssPlugins.push(cssnano({
-      preset: 'default',
-    }));
-  }
-
-  const task = () => gulp.src(options.dir.assets('sass/main.scss'))
-    .pipe(plugins.plumber())
-    .pipe(plugins.if(options.isDev, plugins.sourcemaps.init()))
-      .pipe(plugins.sass())
-      .pipe(plugins.postcss(postcssPlugins))
-    .pipe(plugins.if(options.isDev, plugins.sourcemaps.write()))
-    .pipe(gulp.dest(options.dir.build('assets/css/')));
-
   return {
-    run: task,
-    watch: () => gulp.watch(options.dir.assets('sass/**/*.scss'), gulp.series(options.name())),
+    run: () => {
+      gulp.src(options.src)
+        .pipe(plugins.plumber())
+        .pipe(plugins.if(options.isDebug, plugins.debug({ title: `${options.name()}:` })))
+        .pipe(plugins.if(options.isDev, plugins.sourcemaps.init()))
+          .pipe(plugins.sass())
+          .pipe(plugins.postcss(postcssPlugins(options.postcss, options.isDev)))
+        .pipe(plugins.if(options.isDev, plugins.sourcemaps.write()))
+        .pipe(gulp.dest(options.dest));
+    },
+    watch: () => {
+      gulp.watch(options.watch, gulp.series(options.name()));
+    },
   };
 };

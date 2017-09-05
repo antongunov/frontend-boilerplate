@@ -62,5 +62,23 @@ loadTasks({
       dest: 'build/',
       watch: 'pages/**/*.pug',
     },
+    sass: {
+      src: 'assets/sass/main.scss',
+      postcss: {
+        autoprefixer: {
+          cascade: false,
+        },
+        cssnano: {
+          preset: 'default',
+        },
+        fontMagician: {
+          hosted: [
+            'assets/fonts/',
+          ],
+        },
+      },
+      dest: 'build/assets/css/',
+      watch: 'assets/sass/**/*.{scss,css}',
+    },
   },
 });
