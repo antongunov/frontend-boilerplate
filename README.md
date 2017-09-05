@@ -20,6 +20,21 @@ Run `npm run dev` for developing or `npm run build` for production.
 
 All tasks are independent.
 
+### Example Task
+
+```js
+module.exports = (gulp, options, plugins) => {
+  return {
+    run: (done) => {
+      return done();
+    },
+    watch: () => {
+      gulp.watch(options.watch, gulp.series(options.name()));
+    },
+  };
+};
+```
+
 ## License
 
 The code is available under the [MIT License](LICENSE).
