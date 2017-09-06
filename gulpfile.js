@@ -39,9 +39,14 @@ loadTasks({
    */
   tasks: {
     'browser-sync': {
-      server: {
-        baseDir: buildDir(),
-        index: 'home.html',
+      init: {
+        server: {
+          baseDir: buildDir(),
+          index: 'home.html',
+        },
+        open: false,
+        ui: false,
+        notify: false,
       },
       watch: buildDir('**/*'),
     },

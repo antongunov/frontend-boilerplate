@@ -7,12 +7,7 @@ module.exports = (gulp, options) => {
   });
   return {
     run: (done) => {
-      browserSync.init({
-        server: options.server,
-        open: false,
-        ui: false,
-        notify: false,
-      }, done());
+      browserSync.init(options.init, done());
     },
     watch: () => {
       gulp.watch(options.watch, gulp.series(options.name('reload')));

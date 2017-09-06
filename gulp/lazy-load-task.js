@@ -11,15 +11,13 @@ module.exports = (tasksDir, config, plugins) => {
     let task = null;
     gulp.task(name, (done) => {
       if (!task) {
-        const taskConfig = Object.assign({}, config, options, { name: joinName(name) });
+        const taskConfig = { ...config, ...options, name: joinName(name) };
         task = require(tasksDir(name))(gulp, taskConfig, plugins);
-        task.run(done);
         if (config.live && task.watch) {
           task.watch();
         }
-      } else {
-        task.run(done);
       }
+      task.run(done);
       return done();
     });
   };
