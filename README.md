@@ -21,6 +21,9 @@ npm run dev
 
 # build for production
 npm run build
+
+# run for serving in production mode
+npm start
 ```
 
 ## Gulp Tasks
