@@ -7,12 +7,13 @@ Frontend boilerplate for prototyping web pages using Gulp, PostCSS, Pug and SASS
 ```bash
 # clone this repository
 git clone https://github.com/antongunov/frontend-boilerplate.git
+
 cd frontend-boilerplate
 
 # install dependencies
 npm install
 
-# copy .env and set your settings 
+# copy .env.example to .env and set your settings 
 cp .env.example .env
 
 # run for developing
