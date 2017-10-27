@@ -1,7 +1,7 @@
 {
-  "name": "@antongunov/gulp-boilerplate",
+  "name": "@antongunov/frontend-boilerplate",
   "version": "0.0.1",
-  "description": "Boilerplate for prototyping web pages using Gulp, PostCSS, Pug and SASS",
+  "description": "Frontend boilerplate for prototyping web pages using Gulp, PostCSS, Pug and SASS",
   "private": true,
   "author": {
     "name": "Anton Gunov",
@@ -10,10 +10,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/antongunov/pages-boilerplate.git"
+    "url": "https://github.com/antongunov/frontend-boilerplate.git"
   },
   "bugs": {
-    "url": "https://github.com/antongunov/pages-boilerplate/issues"
+    "url": "https://github.com/antongunov/frontend-boilerplate/issues"
   },
   "scripts": {
     "build": "NODE_ENV=production gulp build",
