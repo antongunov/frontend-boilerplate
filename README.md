@@ -1,4 +1,4 @@
-# Frontend Boilerplate
+# Frontend Boilerplate [![license](https://img.shields.io/dub/l/vibe-d.svg?style=flat-square)](LICENSE)
 
 Frontend boilerplate for prototyping web pages using Gulp, PostCSS, Pug and SASS.
 
