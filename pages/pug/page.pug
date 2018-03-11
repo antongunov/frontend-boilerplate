@@ -1,4 +1,4 @@
-include  mixins/space
+include mixins/space
 
 block data
 
@@ -11,8 +11,8 @@ html(lang="en")
     title= title
     block head
     link(rel="stylesheet" href="/assets/css/main.css")
-    script(src="/assets/js/main.js" defer)
-  body
-    block body
     if env.GA_ID
       include google-analytics
+    script(src="/assets/js/main.js" defer)
+  body
+    block body    
